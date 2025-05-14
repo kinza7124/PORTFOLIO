@@ -1,266 +1,1019 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kinza Afzal - Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <title>Kinza Afzal | Software Developer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --secondary: #818cf8;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --success: #10b981;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(45deg, #0f172a, #1e293b);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-align: center;
+        }
+
+        /* Navigation */
+        .nav-container {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            animation: fadeInDown 0.5s ease;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--light);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            position: relative;
+            padding: 0.5rem 0;
+            font-weight: 500;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--light);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        #home {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 2rem 2rem;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.3s forwards;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.6s forwards;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(79, 70, 229, 0.3);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* About Section */
+        #about {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .about-text p:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+
+        .about-text p:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        .about-text p:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        .about-image {
+            position: relative;
+            opacity: 0;
+            animation: fadeInRight 1s ease 0.4s forwards;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Skills Section */
+        #skills {
+            text-align: center;
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .skill-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            opacity: 0;
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .skill-item i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .skill-item h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Projects Section */
+        #projects {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            opacity: 0;
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(79, 70, 229, 0.3);
+        }
+
+        .project-card img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            aspect-ratio: 16/9;
+            object-fit: cover;
+        }
+
+        .project-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-card .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .project-card .tech-stack span {
+            background: rgba(79, 70, 229, 0.2);
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .project-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .project-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Experience Section */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background: var(--primary);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
+        }
+
+        .timeline-item {
+            padding: 1rem 2rem;
+            position: relative;
+            width: 50%;
+            opacity: 0;
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+            animation-delay: 0.2s;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            animation-delay: 0.4s;
+        }
+
+        .timeline-content {
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::after {
+            content: '';
+            position: absolute;
+            border-style: solid;
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent rgba(255, 255, 255, 0.05);
+            right: -10px;
+            top: 20px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::after {
+            content: '';
+            position: absolute;
+            border-style: solid;
+            border-width: 10px 10px 10px 0;
+            border-color: transparent rgba(255, 255, 255, 0.05) transparent transparent;
+            left: -10px;
+            top: 20px;
+        }
+
+        .timeline-date {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-item h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Education Section */
+        #education {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .education-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .education-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
+        .education-item:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+
+        .education-item:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        .education-item:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        .education-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .education-item .institution {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .education-item .details {
+            margin-bottom: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .education-item .achievements {
+            margin-top: 1rem;
+            padding-left: 1.5rem;
+        }
+
+        .education-item .achievements li {
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        .education-item .achievements li::before {
+            content: '▹';
+            position: absolute;
+            left: -1.5rem;
+            color: var(--primary);
+        }
+
+        /* Contact Section */
+        #contact {
+            text-align: center;
+        }
+
+        .contact-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-form {
+            display: grid;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .form-group {
+            position: relative;
+            opacity: 0;
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
+        .form-group:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+
+        .form-group:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        .form-group:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.3);
+        }
+
+        .form-group label {
+            position: absolute;
+            left: 1rem;
+            top: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+
+        .form-group input:focus+label,
+        .form-group input:valid+label,
+        .form-group textarea:focus+label,
+        .form-group textarea:valid+label {
+            top: -0.5rem;
+            left: 0.8rem;
+            font-size: 0.8rem;
+            background: var(--dark);
+            padding: 0 0.5rem;
+            color: var(--primary);
+        }
+
+        .submit-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0;
+            animation: fadeInUp 0.5s ease 0.8s forwards;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(79, 70, 229, 0.3);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 3rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* Experience Section */
+        #experience {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .experience-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Languages Section */
+        #languages {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .languages-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .language-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+
+        /* Simplified Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(15, 23, 42, 0.95);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-content a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-content a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            margin-top: 1rem;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .footer-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                order: -1;
+            }
+
+            .timeline::before {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 0;
+                text-align: left !important;
+            }
+
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-content::after,
+            .timeline-item:nth-child(even) .timeline-content::after {
+                left: -10px;
+                right: auto;
+                border-width: 10px 10px 10px 0;
+                border-color: transparent rgba(255, 255, 255, 0.05) transparent transparent;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+
+        .skills-container {
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        }
+    </style>
 </head>
-<body class="bg-gray-50">
-    <!-- Header Section -->
-    <header class="bg-blue-800 text-white py-8">
-        <div class="container mx-auto px-4">
-            <div class="text-center">
-                <h1 class="text-4xl font-bold mb-2">KINZA AFZAL</h1>
-                <p class="text-lg">Karachi, Pakistan</p>
-                <div class="mt-4">
-                    <p class="mb-1"><i class="fas fa-phone mr-2"></i>03242217127</p>
-                    <p class="mb-1"><i class="fas fa-envelope mr-2"></i>kinzaafzal07122004@gmail.com</p>
-                    <a href="https://www.linkedin.com/in/kinza-afzal-15660a2a3/" 
-                       class="text-blue-200 hover:text-white underline" 
-                       target="_blank">
-                       <i class="fab fa-linkedin mr-2"></i>LinkedIn Profile
-                    </a>
+
+<body>
+    <div class="nav-container">
+        <nav>
+            <a href="#" class="logo">Kinza Afzal</a>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#education">Education</a>
+                <a href="#experience">Extra-cirricular Activities</a>
+                <a href="#languages">Languages</a>
+                <a href="#footer-content">Contact</a>
+            </div>
+            <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+        </nav>
+    </div>
+
+    <section id="home">
+        <div class="hero-content">
+            <h1>Software Developer</h1>
+            <p>4th semester Computer Science student eager to learn and explore different things.</p>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn btn-primary">View Projects</a>
+                <a href="#footer-content" class="btn btn-outline">Contact Me</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2>About Me</h2>
+
+        <div class="about-text">
+            <p>Hi, I'm Kinza Afzal, a passionate developer with expertise in C/C++ programming, Shell scripting, and
+                Frontend Web development.</p>
+            <p>When I'm not coding, you can find me exploring new technologies and building projects using AI.</p>
+            <p>Relevant Coursework: Calculus, Multivariable Calculus, Object Oriented Programming, Theory of Automata,
+                Data Structures, Programming Fundamentals, Probability and Statistics, Linear Algebra</p>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2>My Skills</h2>
+        <div class="skills-container">
+            <div class="skill-item">
+                <i class="fas fa-gamepad"></i>
+                <h3>Unity</h3>
+            </div>
+            <div class="skill-item">
+                <i class="fab fa-cuttlefish"></i>
+                <h3>C/C++</h3>
+            </div>
+            <div class="skill-item">
+                <i class="fas fa-terminal"></i>
+                <h3>Bash Scripting</h3>
+            </div>
+            <div class="skill-item">
+                <i class="fab fa-html5"></i>
+                <h3>HTML5</h3>
+            </div>
+            <div class="skill-item">
+                <i class="fab fa-css3-alt"></i>
+                <h3>CSS3</h3>
+            </div>
+            <div class="skill-item">
+                <i class="fab fa-js-square"></i>
+                <h3>JavaScript</h3>
+            </div>
+            <div class="skill-item">
+                <i class="fab fa-bootstrap"></i>
+                <h3>Bootstrap</h3>
+            </div>
+            <div class="skill-item">
+                <i class="fas fa-code"></i>
+                <h3>Tailwind CSS</h3>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>My Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <h3>Transport Fee Generation System</h3>
+                <p>C++ system for managing transport fees with OOP principles</p>
+                <div class="tech-stack">
+                    <span>C++</span>
+                    <span>OOP</span>
+                    <span>File Handling</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/kinza7124/PFproject-TransportFee-Generation-System"><i
+                            class="fab fa-github"></i> View Code</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3>Data Analysis Project</h3>
+                <p>Statistical analysis and visualization of complex datasets</p>
+                <div class="tech-stack">
+                    <span>Python</span>
+                    <span>Pandas</span>
+                    <span>NumPy</span>
+                    <span>Statistics</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/kinza7124/DataAnalysis"><i class="fab fa-github"></i> View Code</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3>Algorithm Visualiser</h3>
+                <p>Interactive visualization tool for sorting algorithms</p>
+                <div class="tech-stack">
+                    <span>DataStructures</span>
+                    <span>Programming concepts</span>
+                    <span>JavaScript</span>
+                    <span>Algorithms</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/kinza7124/Algorithm-Visualiser"><i class="fab fa-github"></i> View
+                        Code</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3>Image Compressor</h3>
+                <p>Web-based image compression tool with quality control</p>
+                <div class="tech-stack">
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>JavaScript</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/kinza7124/Image-Compressor-Website"><i class="fab fa-github"></i> View
+                        Code</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3>Hostel Accommodation System</h3>
+                <p>C++ management system for hostel allocations</p>
+                <div class="tech-stack">
+                    <span>C++</span>
+                    <span>OOP</span>
+                    <span>File Handling</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/kinza7124/OOPproject"><i class="fab fa-github"></i> View Code</a>
                 </div>
             </div>
         </div>
-    </header>
+    </section>
 
-    <main class="container mx-auto px-4 py-8">
-        <!-- Professional Summary -->
-        <section class="mb-8">
-            <h2 class="text-2xl font-bold text-blue-800 mb-4 border-b-2 border-blue-800 pb-2">PROFESSIONAL SUMMARY</h2>
-            <p class="text-gray-700 leading-relaxed">
-                Dynamic design leader with proven expertise at IEEE Society, excelling in graphic design and team collaboration. Skilled in game development using Unity and frontend web development, I thrive in fast-paced environments. My leadership and communication abilities drive successful project outcomes, enhancing brand visibility and user engagement.
-            </p>
-        </section>
-
-        <!-- Skills -->
-        <section class="mb-8">
-            <h2 class="text-2xl font-bold text-blue-800 mb-4 border-b-2 border-blue-800 pb-2">SKILLS</h2>
-            <div class="grid md:grid-cols-3 gap-4">
-                <div class="bg-white p-4 rounded-lg shadow">
-                    <h3 class="font-bold mb-2">Game Development</h3>
-                    <ul class="list-disc pl-5">
-                        <li>Unity</li>
-                        <li>C/C++ Programming</li>
-                        <li>Competitive Programming</li>
-                    </ul>
-                </div>
-                <div class="bg-white p-4 rounded-lg shadow">
-                    <h3 class="font-bold mb-2">Web Development</h3>
-                    <ul class="list-disc pl-5">
-                        <li>Frontend Development</li>
-                        <li>Data analysis using MySQL</li>
-                        <li>Graphic Designing</li>
-                    </ul>
-                </div>
-                <div class="bg-white p-4 rounded-lg shadow">
-                    <h3 class="font-bold mb-2">Other Skills</h3>
-                    <ul class="list-disc pl-5">
-                        <li>Leadership</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- Experience -->
-        <section class="mb-8">
-            <h2 class="text-2xl font-bold text-blue-800 mb-4 border-b-2 border-blue-800 pb-2">EXPERIENCE</h2>
-            
-            <div class="space-y-6">
-                <!-- IEEE -->
-                <div class="bg-white p-4 rounded-lg shadow">
-                    <h3 class="font-bold text-lg">Design Head</h3>
-                    <p class="text-gray-600">IEEE Society (January 2024 – January 2025)</p>
-                    <ul class="list-disc pl-5 mt-2">
-                        <li>Selected as Head of Design team where I enhanced my designing skills such as social media post designing, logo designing, engaging media posts and much more.</li>
-                    </ul>
-                </div>
-                 <div class="bg-white p-4 rounded-lg shadow">
-                    <h3 class="font-bold text-lg">Star Performer of Seminar Team</h3>
-                    <p class="text-gray-600">Devday’25 (January 2024 - January 2025)</p>
-                    <ul class="list-disc pl-5 mt-2">
-                        <li>Worked as part of the Seminar Team for DevDay'25, enhancing my skills in event organization and management</li>
-                        <li>Recognized with the 'Star Performer' award for outstanding contribution and performance</li>
-                    </ul>
-                </div>
-                <!-- DevDay -->
-                <div class="bg-white p-4 rounded-lg shadow">
-                    <h3 class="font-bold text-lg">Coordinator of Automation Team</h3>
-                    <p class="text-gray-600">Devday’25 (January 2024 - January 2025)</p>
-                    <ul class="list-disc pl-5 mt-2">
-                        <li>Collaborated in a team to deploy email automation, design custom email templates, and develop the frontend of the results website for DevDay’25</li>
-                    </ul>
-                </div>
-
-                <!-- Game Development -->
-                <div class="bg-white p-4 rounded-lg shadow">
-                    <h3 class="font-bold text-lg">Co-Lead of Game Development Team</h3>
-                    <p class="text-gray-600">Developers Student Club (January 2024 - January 2025)</p>
-                </div>
-
-                <!-- Brand Ambassador -->
-                <div class="bg-white p-4 rounded-lg shadow">
-                    <h3 class="font-bold text-lg">Brand Ambassador</h3>
-                    <p class="text-gray-600">January 2024 - January 2025</p>
-                    <ul class="list-disc pl-5 mt-2">
-                        <li>Brand Ambassador of Devday’24</li>
-                        <li>Brand Ambassador of TGD (The Grand Debate’24) organized by TLC society</li>
-                        <li>Brand Ambassador of FDSS’25</li>
-                    </ul>
-                </div>
-
-                <!-- M-Labs -->
-                <div class="bg-white p-4 rounded-lg shadow">
-                    <h3 class="font-bold text-lg">Summer Program, Game Jam</h3>
-                    <p class="text-gray-600">M-Labs (January 2024)</p>
-                    <ul class="list-disc pl-5 mt-2">
-                        <li>Completed summer program at M-Labs learning Game development using Unity</li>
-                        <li>Participated in game Jam collaborating with team to make 'Racket Smash Carnival'</li>
-                    </ul>
-                </div>
-
-                <!-- PROCOM -->
-                <div class="bg-white p-4 rounded-lg shadow">
-                    <h3 class="font-bold text-lg">Guest Representative</h3>
-                    <p class="text-gray-600">PROCOM’25</p>
-                    <ul class="list-disc pl-5 mt-2">
-                        <li>Enhanced communication skills through direct engagement with guests and effective event coordination</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- Education -->
-        <section class="mb-8">
-            <h2 class="text-2xl font-bold text-blue-800 mb-4 border-b-2 border-blue-800 pb-2">EDUCATION</h2>
-            <div class="bg-white p-4 rounded-lg shadow">
-                <h3 class="font-bold text-lg">Bachelor of Computer Science</h3>
-                <p class="text-gray-600">National University of Emerging and Computing Sciences, FAST NUCES (CGPA: 3.8)</p>
-                <ul class="list-disc pl-5 mt-2">
-                    <li>Dean's List in 1st semester - Fall 2023</li>
-                    <li>Dean's List in 2nd semester - Spring 2024</li>
-                    <li>Awarded Rector's list in 3rd semester - Fall 2024</li>
+    <section id="education">
+        <h2>Education</h2>
+        <div class="education-container">
+            <div class="education-item">
+                <h3>Bachelor of Computer Science</h3>
+                <div class="institution">FAST NUCES (2022-2026)</div>
+                <div class="details">CGPA: 3.8</div>
+                <ul class="achievements">
+                    <li>Dean's List: Fall 2023, Spring 2024</li>
+                    <li>Coursework: Data Structures, OOP, Automata Theory, Probability and Statistics, Operating systems
+                    </li>
+                    <li>Rector's List: Fall 2024</li>
                 </ul>
             </div>
 
-            <div class="bg-white p-4 rounded-lg shadow mt-4">
-                <h3 class="font-bold text-lg">Alevels</h3>
-                <p class="text-gray-600">Highbrow College</p>
-                <p>Grades: 3A*’s, 1A</p>
+            <div class="education-item">
+                <h3>A levels</h3>
+                <div class="institution">Highbrow College</div>
+                <div class="details">Grades: 3A*'s, 1A</div>
             </div>
 
-            <div class="bg-white p-4 rounded-lg shadow mt-4">
-                <h3 class="font-bold text-lg">Olevels</h3>
-                <p class="text-gray-600">HPGS</p>
-                <p>Grades: 8A*’s</p>
+            <div class="education-item">
+                <h3>O levels</h3>
+                <div class="institution">HPGS</div>
+                <div class="details">Grades: 8A*'s</div>
             </div>
-        </section>
-
-        <!-- Awards -->
-        <section class="mb-8">
-            <h2 class="text-2xl font-bold text-blue-800 mb-4 border-b-2 border-blue-800 pb-2">AWARDS</h2>
-            <div class="bg-white p-4 rounded-lg shadow">
-                <ul class="list-disc pl-5">
-                    <li>Dean's List of Honour - Fall 2023</li>
-                    <li>Dean's List of Honour - Spring 2024</li>
-                    <li>Rector's List of Honour - Fall 2024</li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- Projects -->
-        <section class="mb-8">
-            <h2 class="text-2xl font-bold text-blue-800 mb-4 border-b-2 border-blue-800 pb-2">PROJECTS</h2>
-            <div class="grid md:grid-cols-2 gap-4">
-                <div class="bg-white p-4 rounded-lg shadow">
-                    <h3 class="font-bold">Transport Fee Generation System</h3>
-                    <a href="https://github.com/kinza7124/PFproject-TransportFee-Generation-System" class="text-blue-600 underline block mt-2">https://github.com/kinza7124/PFproject-</a>
-                </div>
-                <div class="bg-white p-4 rounded-lg shadow">
-                    <h3 class="font-bold">Data Analysis Project</h3>
-                    <a href="https://github.com/kinza7124/DataAnalysis" class="text-blue-600 underline block mt-2">https://github.com/kinza7124/DataAnalysis</a>
-                </div>
-                <div class="bg-white p-4 rounded-lg shadow">
-                    <h3 class="font-bold">Algorithm Visualiser</h3>
-                    <a href="https://github.com/kinza7124/Algorithm-Visualiser" class="text-blue-600 underline block mt-2">https://github.com/kinza7124/Algorithm-Visualiser</a>
-                </div>
-                <div class="bg-white p-4 rounded-lg shadow">
-                    <h3 class="font-bold">Image Compressor</h3>
-                    <a href="https://github.com/kinza7124/Image-Compressor-Website" class="text-blue-600 underline block mt-2">https://github.com/kinza7124/Image-Compressor-Website</a>
-                </div>
-                <div class="bg-white p-4 rounded-lg shadow">
-                    <h3 class="font-bold">Hostel Accommodation System</h3>
-                    <a href="https://github.com/kinza7124/OOPproject" class="text-blue-600 underline block mt-2">https://github.com/kinza7124/OOPproject</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Courses -->
-        <section class="mb-8">
-            <h2 class="text-2xl font-bold text-blue-800 mb-4 border-b-2 border-blue-800 pb-2">RELEVANT COURSES</h2>
-            <div class="bg-white p-4 rounded-lg shadow">
-                <ul class="list-disc pl-5">
-                    <li>Object Oriented Programming</li>
-                    <li>Data Structures</li>
-                    <li>Computer Organization and Assembly Language</li>
-                    <li>Operating Systems</li>
-                    <li>Probability and Statistics</li>
-                    <li>Calculus and Analytical Geometry</li>
-                    <li>Theory of Automata</li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- Hobbies & Languages -->
-        <section class="mb-8">
-            <div class="grid md:grid-cols-2 gap-8">
-                <div>
-                    <h2 class="text-2xl font-bold text-blue-800 mb-4 border-b-2 border-blue-800 pb-2">HOBBIES</h2>
-                    <div class="bg-white p-4 rounded-lg shadow">
-                        <ul class="list-disc pl-5">
-                            <li>Playing table tennis and badminton</li>
-                            <li>Playing chess</li>
-                            <li>Sketching and digital art</li>
-                            <li>Volunteering at tech events (community engagement)</li>
-                            <li>Exploring tech podcasts and AI trends</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div>
-                    <h2 class="text-2xl font-bold text-blue-800 mb-4 border-b-2 border-blue-800 pb-2">LANGUAGES</h2>
-                    <div class="bg-white p-4 rounded-lg shadow">
-                        <table class="w-full">
-                            <tr>
-                                <td class="font-bold">Urdu</td>
-                                <td>Proficient (C2)</td>
-                            </tr>
-                            <tr>
-                                <td class="font-bold">English</td>
-                                <td>Upper Intermediate (B2)</td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Personal Info -->
-        <section class="mb-8">
-            <h2 class="text-2xl font-bold text-blue-800 mb-4 border-b-2 border-blue-800 pb-2">PERSONAL INFORMATION</h2>
-            <div class="bg-white p-4 rounded-lg shadow">
-                <p><span class="font-bold">Date of Birth:</span> 12/07/04</p>
-            </div>
-        </section>
-    </main>
-
-    <footer class="bg-blue-800 text-white py-4 mt-8">
-        <div class="container mx-auto px-4 text-center">
-            <p>© 2024 Kinza Afzal. All rights reserved.</p>
         </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2>Co-cirricular activities</h2>
+        <div class="experience-container">
+            <div class="experience-item">
+                <h3>Design Head</h3>
+                <div class="institution">IEEE Society (2024-2025)</div>
+                <ul class="achievements">
+                    <li>Led social media post and logo design teams</li>
+                    <li>Created engaging visual content for events</li>
+                </ul>
+            </div>
+            <div class="experience-item">
+                <h3>Co-ordinator of Automation Team</h3>
+                <div class="institution">Developers Day 2025</div>
+                <ul class="achievements">
+                    <li>Collaborated in a team to deploy email automation, design custom email templates, and develop
+                        the frontend of the results website for DevDay’25
+                    </li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <h3>Star Performer of Seminar Team</h3>
+                <div class="institution">Developers Day 2025</div>
+                <ul class="achievements">
+                    <li>Worked as part of the Seminar Team for DevDay'25, enhancing my skills in event organization and
+                        management
+                    </li>
+                    <li>Recognized with the 'Star Performer' award for outstanding contribution and performance</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <h3>Guest Representative</h3>
+                <div class="institution">PROCOM'25</div>
+                <ul class="achievements">
+                    <li>Enhanced communication skills through direct engagement with guests and effective event
+                        coordination</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <h3>Game Dev Co-Lead</h3>
+                <div class="institution">Developers Student Club</div>
+                <ul class="achievements">
+                    <li>Managed game development projects</li>
+                    <li>Organized workshops and team collaborations</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="languages">
+        <h2>Languages</h2>
+        <div class="languages-container">
+            <div class="language-item">
+                <h3>Urdu</h3>
+                <p>Native Proficiency (C2)</p>
+            </div>
+            <div class="language-item">
+                <h3>English</h3>
+                <p>Professional Working (B2)</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <footer id="footer-content">
+        <div class="footer-content">
+            <a href="tel:03242217127" class="contact-number">
+                <i class="fas fa-phone"></i> 0324-2217127
+            </a>
+            <a href="https://github.com/kinza7124" target="_blank" class="github-link">
+                <i class="fab fa-github"></i> GitHub Profile
+            </a>
+            <a href="https://www.linkedin.com/in/kinza-afzal-15660a2a3/" target="_blank" class="linkedin-link">
+                <i class="fab fa-linkedin"></i> Linkedin Profile
+            </a>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Kinza Afzal. All rights reserved.</p>
+        </div>
+        </footer>
     </footer>
 </body>
+
 </html>
