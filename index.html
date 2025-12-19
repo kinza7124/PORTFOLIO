@@ -4,266 +4,169 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kinza Afzal | Software Developer</title>
+    <title>Kinza Afzal | AI & Software Developer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #4f46e5;
-            --secondary: #818cf8;
-            --dark: #1e293b;
+            --primary: #3b82f6; 
+            --primary-glow: rgba(59, 130, 246, 0.4);
+            --secondary: #8b5cf6;
+            --dark: #020617;
             --light: #f8fafc;
-            --success: #10b981;
+            --glass: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --card-hover: rgba(59, 130, 246, 0.05);
         }
 
         * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0; padding: 0; box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
         }
 
         body {
-            background: linear-gradient(45deg, #0f172a, #1e293b);
+            background-color: var(--dark);
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(139, 92, 246, 0.15) 0px, transparent 50%);
             color: var(--light);
             line-height: 1.6;
             overflow-x: hidden;
         }
 
         section {
-            padding: 5rem 2rem;
+            padding: 6rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
         }
 
         h2 {
             font-size: 2.5rem;
-            margin-bottom: 3rem;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            margin-bottom: 2.5rem;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
             text-align: center;
+            font-weight: 700;
         }
 
         /* Navigation */
         .nav-container {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(15, 23, 42, 0.8);
-            backdrop-filter: blur(10px);
+            position: fixed; top: 0; width: 100%;
+            background: rgba(2, 6, 23, 0.8);
+            backdrop-filter: blur(12px);
             z-index: 1000;
-            animation: fadeInDown 0.5s ease;
+            border-bottom: 1px solid var(--glass-border);
         }
 
         nav {
-            max-width: 1200px;
-            margin: 0 auto;
+            max-width: 1200px; margin: 0 auto;
             padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            display: flex; justify-content: space-between; align-items: center;
         }
 
         .logo {
-            font-weight: 700;
-            font-size: 1.5rem;
+            font-weight: 700; font-size: 1.5rem;
             color: var(--light);
             text-decoration: none;
         }
 
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
-
+        .nav-links { display: flex; gap: 2rem; }
         .nav-links a {
-            color: var(--light);
-            text-decoration: none;
-            position: relative;
-            padding: 0.5rem 0;
-            font-weight: 500;
+            color: var(--light); text-decoration: none;
+            font-size: 0.9rem; font-weight: 500;
+            transition: 0.3s; opacity: 0.7;
         }
+        .nav-links a:hover { opacity: 1; color: var(--primary); }
 
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--light);
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        /* Hero Section */
+        /* Hero */
         #home {
             min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 8rem 2rem 2rem;
-            position: relative;
-        }
-
-        .hero-content {
-            max-width: 1200px;
-            margin: 0 auto;
+            display: flex; align-items: center; justify-content: center;
             text-align: center;
+            padding-top: 80px;
         }
 
         .hero-content h1 {
-            font-size: 4rem;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            animation: fadeInUp 1s ease;
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            line-height: 1.1; margin-bottom: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
         }
 
         .hero-content p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 2rem;
-            opacity: 0;
-            animation: fadeInUp 1s ease 0.3s forwards;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            opacity: 0;
-            animation: fadeInUp 1s ease 0.6s forwards;
+            font-size: 1.25rem; color: #94a3b8;
+            max-width: 700px; margin: 0 auto 2.5rem;
         }
 
         .btn {
+            padding: 0.8rem 2.2rem; border-radius: 12px;
+            font-weight: 600; text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             display: inline-block;
-            padding: 0.8rem 1.8rem;
-            border-radius: 50px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
         }
 
         .btn-primary {
-            background: var(--primary);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(79, 70, 229, 0.3);
+            background: var(--primary); color: white;
+            box-shadow: 0 4px 14px 0 var(--primary-glow);
         }
 
         .btn-outline {
-            border: 2px solid var(--primary);
-            color: var(--primary);
+            border: 1px solid var(--glass-border);
+            color: white; background: var(--glass);
+            margin-left: 1rem;
         }
 
-        .btn-outline:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-3px);
-        }
-
-        /* About Section */
-        #about {
-            background: rgba(255, 255, 255, 0.03);
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .about-text p {
-            margin-bottom: 1.5rem;
-            opacity: 0;
-            animation: fadeInUp 1s ease forwards;
-        }
-
-        .about-text p:nth-child(1) {
-            animation-delay: 0.2s;
-        }
-
-        .about-text p:nth-child(2) {
-            animation-delay: 0.4s;
-        }
-
-        .about-text p:nth-child(3) {
-            animation-delay: 0.6s;
-        }
-
-        .about-image {
-            position: relative;
-            opacity: 0;
-            animation: fadeInRight 1s ease 0.4s forwards;
-        }
-
-        .about-image img {
-            width: 100%;
-            border-radius: 15px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Skills Section */
-        #skills {
-            text-align: center;
-        }
-
-        .skills-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        /* Experience Scroll Container */
+        .scroll-container {
+            display: flex;
             gap: 1.5rem;
-            margin-top: 2rem;
+            overflow-x: auto;
+            padding: 1rem 0.5rem 2rem;
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary) var(--dark);
         }
 
-        .skill-item {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 1.5rem;
-            border-radius: 10px;
-            transition: all 0.3s ease;
-            opacity: 0;
-            animation: fadeInUp 0.5s ease forwards;
+        .scroll-container::-webkit-scrollbar { height: 6px; }
+        .scroll-container::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
+
+        /* Glass Cards */
+        .glass-card {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            transition: 0.3s;
         }
 
-        .skill-item:hover {
+        .society-card {
+            min-width: 350px;
+            margin-bottom: 0;
+        }
+
+        .glass-card:hover {
+            border-color: var(--primary);
+            background: var(--card-hover);
             transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.1);
         }
 
-        .skill-item i {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+        .accent-text { color: var(--primary); font-weight: 700; }
+        .date-text { color: var(--secondary); font-size: 0.85rem; font-weight: 600; }
+
+        .exp-badge {
+            font-size: 0.75rem;
+            background: rgba(59, 130, 246, 0.1);
             color: var(--primary);
+            padding: 4px 12px;
+            border-radius: 8px;
+            margin-left: 10px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
         }
 
-        .skill-item h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        /* Projects Section */
-        #projects {
-            background: rgba(255, 255, 255, 0.03);
-        }
-
+        /* Projects Grid */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
@@ -271,477 +174,98 @@
         }
 
         .project-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            padding: 1.5rem;
+            background: var(--glass);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-            opacity: 0;
-            animation: fadeInUp 0.5s ease forwards;
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 1.8rem;
+            transition: 0.4s;
+            display: flex;
+            flex-direction: column;
         }
 
         .project-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(79, 70, 229, 0.3);
+            border-color: var(--primary);
+            background: var(--card-hover);
         }
 
-        .project-card img {
-            width: 100%;
-            border-radius: 10px;
-            margin-bottom: 1rem;
-            aspect-ratio: 16/9;
-            object-fit: cover;
-        }
-
-        .project-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .project-card .tech-stack {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin: 1rem 0;
-        }
-
-        .project-card .tech-stack span {
-            background: rgba(79, 70, 229, 0.2);
-            color: var(--primary);
-            padding: 0.3rem 0.8rem;
-            border-radius: 50px;
-            font-size: 0.8rem;
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 8px; margin: 1.5rem 0; }
+        .tech-stack span {
+            font-size: 0.75rem;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 4px 12px;
+            border-radius: 8px;
+            color: var(--secondary);
             font-weight: 600;
         }
 
         .project-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
+            display: flex; gap: 1.2rem;
+            margin-top: auto;
+            padding-top: 1.2rem;
+            border-top: 1px solid var(--glass-border);
         }
 
         .project-links a {
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: color 0.3s ease;
+            color: var(--light); text-decoration: none; font-size: 0.85rem;
+            display: flex; align-items: center; gap: 6px;
+            transition: 0.3s;
         }
 
-        .project-links a:hover {
-            color: var(--primary);
-        }
+        .project-links a:hover { color: var(--primary); }
 
-        /* Experience Section */
-        .timeline {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem 0;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            width: 2px;
-            background: var(--primary);
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            margin-left: -1px;
-        }
-
-        .timeline-item {
-            padding: 1rem 2rem;
-            position: relative;
-            width: 50%;
-            opacity: 0;
-            animation: fadeInUp 0.5s ease forwards;
-        }
-
-        .timeline-item:nth-child(odd) {
-            left: 0;
-            text-align: right;
-            animation-delay: 0.2s;
-        }
-
-        .timeline-item:nth-child(even) {
-            left: 50%;
-            animation-delay: 0.4s;
-        }
-
-        .timeline-content {
-            padding: 1.5rem;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            position: relative;
-        }
-
-        .timeline-item:nth-child(odd) .timeline-content::after {
-            content: '';
-            position: absolute;
-            border-style: solid;
-            border-width: 10px 0 10px 10px;
-            border-color: transparent transparent transparent rgba(255, 255, 255, 0.05);
-            right: -10px;
-            top: 20px;
-        }
-
-        .timeline-item:nth-child(even) .timeline-content::after {
-            content: '';
-            position: absolute;
-            border-style: solid;
-            border-width: 10px 10px 10px 0;
-            border-color: transparent rgba(255, 255, 255, 0.05) transparent transparent;
-            left: -10px;
-            top: 20px;
-        }
-
-        .timeline-date {
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .timeline-item h3 {
-            margin-bottom: 0.5rem;
-        }
-
-        /* Education Section */
-        #education {
-            background: rgba(255, 255, 255, 0.03);
-        }
-
-        .education-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .education-item {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            opacity: 0;
-            animation: fadeInUp 0.5s ease forwards;
-        }
-
-        .education-item:nth-child(1) {
-            animation-delay: 0.2s;
-        }
-
-        .education-item:nth-child(2) {
-            animation-delay: 0.4s;
-        }
-
-        .education-item:nth-child(3) {
-            animation-delay: 0.6s;
-        }
-
-        .education-item h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-            color: var(--primary);
-        }
-
-        .education-item .institution {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-
-        .education-item .details {
-            margin-bottom: 1rem;
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .education-item .achievements {
-            margin-top: 1rem;
-            padding-left: 1.5rem;
-        }
-
-        .education-item .achievements li {
-            margin-bottom: 0.5rem;
-            position: relative;
-        }
-
-        .education-item .achievements li::before {
-            content: '▹';
-            position: absolute;
-            left: -1.5rem;
-            color: var(--primary);
-        }
-
-        /* Contact Section */
-        #contact {
-            text-align: center;
-        }
-
-        .contact-container {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .contact-form {
+        /* Skills */
+        .skills-grid {
             display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 1.5rem;
-            margin-top: 2rem;
         }
 
-        .form-group {
-            position: relative;
-            opacity: 0;
-            animation: fadeInUp 0.5s ease forwards;
+        .skill-group h3 {
+            margin-bottom: 1.5rem; color: var(--primary);
+            font-size: 1.2rem; display: flex; align-items: center; gap: 10px;
         }
 
-        .form-group:nth-child(1) {
-            animation-delay: 0.2s;
-        }
-
-        .form-group:nth-child(2) {
-            animation-delay: 0.4s;
-        }
-
-        .form-group:nth-child(3) {
-            animation-delay: 0.6s;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 1rem;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 5px;
-            color: white;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.3);
-        }
-
-        .form-group label {
-            position: absolute;
-            left: 1rem;
-            top: 1rem;
-            color: rgba(255, 255, 255, 0.7);
-            transition: all 0.3s ease;
-            pointer-events: none;
-        }
-
-        .form-group input:focus+label,
-        .form-group input:valid+label,
-        .form-group textarea:focus+label,
-        .form-group textarea:valid+label {
-            top: -0.5rem;
-            left: 0.8rem;
-            font-size: 0.8rem;
-            background: var(--dark);
-            padding: 0 0.5rem;
+        .tag {
+            background: rgba(59, 130, 246, 0.08);
             color: var(--primary);
+            padding: 6px 14px;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin: 4px;
+            display: inline-block;
+            border: 1px solid rgba(59, 130, 246, 0.1);
         }
 
-        .submit-btn {
+        .cgpa-badge {
             background: var(--primary);
             color: white;
-            border: none;
-            padding: 1rem;
-            border-radius: 5px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            opacity: 0;
-            animation: fadeInUp 0.5s ease 0.8s forwards;
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(79, 70, 229, 0.3);
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            margin-top: 3rem;
-        }
-
-        .social-links a {
-            color: white;
-            font-size: 1.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .social-links a:hover {
-            color: var(--primary);
-            transform: translateY(-3px);
-        }
-
-        /* Experience Section */
-        #experience {
-            background: rgba(255, 255, 255, 0.03);
-        }
-
-        .experience-item {
-            background: rgba(255, 255, 255, 0.05);
+            padding: 6px 16px;
             border-radius: 10px;
-            padding: 2rem;
-            margin-bottom: 2rem;
+            font-weight: 700;
         }
 
-        /* Languages Section */
-        #languages {
-            background: rgba(255, 255, 255, 0.03);
-        }
-
-        .languages-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .language-item {
-            text-align: center;
-            padding: 1.5rem;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-        }
-
-        /* Simplified Footer */
         footer {
+            background: #010409;
+            padding: 4rem 2rem;
             text-align: center;
-            padding: 2rem;
-            background: rgba(15, 23, 42, 0.95);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid var(--glass-border);
         }
 
-        .footer-content {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            margin-bottom: 1.5rem;
-            flex-wrap: wrap;
+        .footer-links {
+            display: flex; justify-content: center; gap: 2.5rem;
+            margin-bottom: 2rem; flex-wrap: wrap;
         }
 
-        .footer-content a {
-            color: white;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: color 0.3s ease;
-        }
+        .footer-links a { color: var(--light); text-decoration: none; font-size: 1.2rem; transition: 0.3s; opacity: 0.7; }
+        .footer-links a:hover { opacity: 1; color: var(--primary); }
 
-        .footer-content a:hover {
-            color: var(--primary);
-        }
-
-        .footer-bottom {
-            margin-top: 1rem;
-            opacity: 0.8;
-        }
-
-        @media (max-width: 768px) {
-            .footer-content {
-                flex-direction: column;
-                gap: 1rem;
-            }
-        }
-
-        /* Animations */
+        .animate { animation: fadeInUp 0.8s ease forwards; }
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInRight {
-            from {
-                opacity: 0;
-                transform: translateX(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-
-            .about-image {
-                order: -1;
-            }
-
-            .timeline::before {
-                left: 31px;
-            }
-
-            .timeline-item {
-                width: 100%;
-                padding-left: 70px;
-                padding-right: 0;
-                text-align: left !important;
-            }
-
-            .timeline-item:nth-child(even) {
-                left: 0;
-            }
-
-            .timeline-item:nth-child(odd) .timeline-content::after,
-            .timeline-item:nth-child(even) .timeline-content::after {
-                left: -10px;
-                right: auto;
-                border-width: 10px 10px 10px 0;
-                border-color: transparent rgba(255, 255, 255, 0.05) transparent transparent;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .mobile-menu-btn {
-                display: block;
-            }
-        }
-
-        .skills-container {
-            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
@@ -751,372 +275,270 @@
         <nav>
             <a href="#" class="logo">Kinza Afzal</a>
             <div class="nav-links">
-                <a href="#home">Home</a>
-                <a href="#about">About</a>
-                <a href="#skills">Skills</a>
+                <a href="#experience">Experience</a>
                 <a href="#projects">Projects</a>
                 <a href="#education">Education</a>
-                <a href="#experience">Extra-cirricular Activities</a>
-                <a href="#languages">Languages</a>
                 <a href="#footer-content">Contact</a>
             </div>
-            <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
         </nav>
     </div>
 
     <section id="home">
-        <div class="hero-content">
-            <h1>Software Developer</h1>
-            <p>5th semester Computer Science student eager to learn and explore different things.</p>
+        <div class="hero-content animate">
+            <h1>Engineering Intelligence <br><span style="color: var(--primary)">with Logic & AI.</span></h1>
+            <p>5th Semester CS Student at FAST NUCES. TA for Data Structures & Design Co-Head at ACM NUCES.</p>
             <div class="hero-buttons">
                 <a href="#projects" class="btn btn-primary">View Projects</a>
-                <a href="#footer-content" class="btn btn-outline">Contact Me</a>
+                <a href="#footer-content" class="btn btn-outline">Let's Talk</a>
             </div>
         </div>
     </section>
 
-   <section id="about">
-    <h2>About Me</h2>
+    <section id="experience">
+        <h2>Professional Experience</h2>
+        
+        <div class="glass-card animate">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                <h3>Teaching Assistant (Data Structures)</h3>
+                <span class="date-text">Aug 2025 - Dec 2025</span>
+            </div>
+            <p class="accent-text">FAST-NUCES Karachi <span class="exp-badge">Official Contract</span></p>
+            <p style="margin-top: 0.8rem; color: #94a3b8;">Mentoring 50+ students in mastering complex DSA concepts including Trees, Graphs, and Advanced Sorting Algorithms.</p>
+        </div>
 
-    <div class="about-text">
-        <p>Hi, I'm Kinza Afzal, a passionate developer with expertise in Frontend Web Development and Machine Learning. I enjoy building interactive web applications and AI-driven solutions that solve real-world problems.</p>
-        <p>When I'm not coding, you can find me exploring new AI/ML technologies, experimenting with NLP models, and enhancing my skills in computer vision and data analysis.</p>
-        <p>Relevant Coursework: Machine Learning, Database Systems, Data Structures, Object-Oriented Programming, Programming Fundamentals, Operating Systems, Probability and Statistics, Linear Algebra</p>
-    </div>
-</section>
+        <div class="glass-card animate">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                <h3>Frontend Developer Internee</h3>
+                <span class="date-text">Aug 2025 - Sep 2025</span>
+            </div>
+            <p class="accent-text">MSN Academy <span class="exp-badge">Remote Internship</span></p>
+            <p style="margin-top: 0.8rem; color: #94a3b8;">Architected a responsive corporate landing page and optimized deployment pipelines via Vercel.</p>
+        </div>
 
+        <div class="glass-card animate">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                <h3>Open Source Developer</h3>
+                <span class="date-text">Jul 2025 - Sep 2025</span>
+            </div>
+            <p class="accent-text">GirlScript Summer of Code <span class="exp-badge">Seasonal Contributor</span></p>
+            <p style="margin-top: 0.8rem; color: #94a3b8;">Contributed to high-impact repositories, focusing on frontend scalability and component modularity.</p>
+        </div>
+
+        <h2 style="margin-top: 4rem;">Leadership & Societies</h2>
+        <div class="scroll-container">
+            <div class="glass-card society-card">
+                <div style="display: flex; justify-content: space-between;">
+                    <h3>Design Co-Head</h3>
+                    <span class="date-text">Present</span>
+                </div>
+                <p class="accent-text">ACM NUCES Karachi</p>
+                <p style="margin-top: 0.5rem; font-size: 0.9rem; color: #94a3b8;">Leading the visual identity and design strategy for the ACM student chapter.</p>
+            </div>
+
+            <div class="glass-card society-card">
+                <div style="display: flex; justify-content: space-between;">
+                    <h3>Automation Team Member</h3>
+                    <span class="date-text">DevDay '25</span>
+                </div>
+                <p class="accent-text">Developers Day 2025</p>
+                <p style="margin-top: 0.5rem; font-size: 0.9rem; color: #94a3b8;">Developed email automation, custom templates, and the results portal frontend.</p>
+                <a href="https://automation-showcase-devday25.vercel.app/" target="_blank" style="color: var(--primary); text-decoration: none; font-size: 0.8rem; font-weight: bold; margin-top: 10px; display: block;">View Project →</a>
+            </div>
+
+            <div class="glass-card society-card">
+                <div style="display: flex; justify-content: space-between;">
+                    <h3>Token of Appreciation</h3>
+                    <span class="date-text">2025</span>
+                </div>
+                <p class="accent-text">Coder Cup 2025</p>
+                <p style="margin-top: 0.5rem; font-size: 0.9rem; color: #94a3b8;">Recognized for outstanding performance and contribution during the event execution.</p>
+            </div>
+
+            <div class="glass-card society-card">
+                <div style="display: flex; justify-content: space-between;">
+                    <h3>Design Head</h3>
+                    <span class="date-text">2024-2025</span>
+                </div>
+                <p class="accent-text">IEEE Society</p>
+                <p style="margin-top: 0.5rem; font-size: 0.9rem; color: #94a3b8;">Directed social media visual content and logo designs for national level events.</p>
+            </div>
+        </div>
+    </section>
 
     <section id="skills">
-        <h2>My Skills</h2>
-        <div class="skills-container">
-            <div class="skill-item">
-                <i class="fas fa-gamepad"></i>
-                <h3>Unity</h3>
+        <h2>Technical Arsenal</h2>
+        <div class="skills-grid">
+            <div class="glass-card skill-group animate">
+                <h3><i class="fas fa-brain"></i> AI & Machine Learning</h3>
+                <div class="skill-tags">
+                    <span class="tag">Python</span><span class="tag">Machine Learning</span>
+                    <span class="tag">Computer Vision</span><span class="tag">NLP</span>
+                    <span class="tag">OpenCV</span><span class="tag">MediaPipe</span>
+                    <span class="tag">Pandas / NumPy</span>
+                </div>
             </div>
-            <div class="skill-item">
-                <i class="fab fa-cuttlefish"></i>
-                <h3>C/C++</h3>
+            <div class="glass-card skill-group animate">
+                <h3><i class="fas fa-code"></i> Software Engineering</h3>
+                <div class="skill-tags">
+                    <span class="tag">C++ / C</span><span class="tag">Data Structures</span>
+                    <span class="tag">Algorithms</span><span class="tag">OOP</span>
+                    <span class="tag">Bash Scripting</span><span class="tag">SQL</span>
+                </div>
             </div>
-            <div class="skill-item">
-                <i class="fas fa-terminal"></i>
-                <h3>Bash Scripting</h3>
-            </div>
-            <div class="skill-item">
-                <i class="fab fa-html5"></i>
-                <h3>HTML5</h3>
-            </div>
-            <div class="skill-item">
-                <i class="fab fa-css3-alt"></i>
-                <h3>CSS3</h3>
-            </div>
-            <div class="skill-item">
-                <i class="fab fa-js-square"></i>
-                <h3>JavaScript</h3>
-            </div>
-            <div class="skill-item">
-                <i class="fab fa-bootstrap"></i>
-                <h3>Bootstrap</h3>
-            </div>
-            <div class="skill-item">
-                <i class="fas fa-code"></i>
-                <h3>Tailwind CSS</h3>
-            </div>
-            <div class="skill-item">
-                <i class="fab fa-python"></i>
-                <h3>Python</h3>
+            <div class="glass-card skill-group animate">
+                <h3><i class="fas fa-laptop-code"></i> Modern Web & Tools</h3>
+                <div class="skill-tags">
+                    <span class="tag">JavaScript (ES6+)</span><span class="tag">React</span>
+                    <span class="tag">Tailwind CSS</span><span class="tag">Bootstrap</span>
+                    <span class="tag">Git / GitHub</span><span class="tag">Vercel</span>
+                </div>
             </div>
         </div>
     </section>
 
     <section id="projects">
-        <h2>My Projects</h2>
+        <h2>Selected Projects</h2>
         <div class="projects-grid">
+
             <div class="project-card">
-                <h3>Transport Fee Generation System</h3>
-                <p>C++ system for managing transport fees with OOP principles</p>
+                <h3>Predicting Bug Type from Text</h3>
+                <p>Developed a Machine Learning & NLP model to predict bug types from text data using advanced classification algorithms.</p>
                 <div class="tech-stack">
-                    <span>C++</span>
-                    <span>OOP</span>
-                    <span>File Handling</span>
+                    <span class="tag">Python</span><span class="tag">Machine Learning</span><span class="tag">NLP</span>
                 </div>
                 <div class="project-links">
-                    <a href="https://github.com/kinza7124/PFproject-TransportFee-Generation-System"><i
-                            class="fab fa-github"></i> View Code</a>
+                    <a href="https://github.com/kinza7124/Predicting-Bug-Type-ML-project" target="_blank"><i class="fab fa-github"></i> Code</a>
+                </div>
+            </div>
+            
+            <div class="project-card animate">
+                <h3>Network Log Analyzer</h3>
+                <p>ML model using NLP to monitor network logs, detecting anomalies with automated email alerts via ChatOps.</p>
+                <div class="tech-stack">
+                    <span>Python</span><span>NLP</span><span>Streamlit</span><span>ML</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/kinza7124/Network-Log-Analyzer" target="_blank"><i class="fab fa-github"></i> Code</a>
+                    <a href="https://network-log-analyzer-7aue37agzfrjiri7tv4hkd.streamlit.app/" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3>NetLabPro</h3>
+                <p>Interactive learning and gamified platform developed for Computer Network Labs.</p>
+                <div class="tech-stack">
+                    <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/kinza7124/NetLabPro" target="_blank"><i class="fab fa-github"></i> Code</a>
+                    <a href="https://net-lab-pro.vercel.app/" target="_blank"><i class="fas fa-external-link-alt"></i> Live</a>
+                </div>
+            </div>
+
+            <div class="project-card animate">
+                <h3>Algorithm Visualiser</h3>
+                <p>Interactive platform visualizing sorting, searching, and graph algorithms in real-time.</p>
+                <div class="tech-stack">
+                    <span>JavaScript</span><span>Vercel</span><span>Algorithms</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/kinza7124/Algorithm-Visualiser" target="_blank"><i class="fab fa-github"></i> Code</a>
+                    <a href="https://algorithm-visualiser-eight.vercel.app/" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                </div>
+            </div>
+
+            <div class="project-card animate">
+                <h3>Gesture Volume Control</h3>
+                <p>AI application tracking hand landmarks via OpenCV to manipulate system audio levels.</p>
+                <div class="tech-stack">
+                    <span>OpenCV</span><span>Mediapipe</span><span>Python</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/kinza7124/OPENCV/tree/main/GestureVolumeControl" target="_blank"><i class="fab fa-github"></i> Source</a>
+                </div>
+            </div>
+
+            <div class="project-card animate">
+                <h3>Regex Automata Converter</h3>
+                <p>Transforms complex Regular Expressions into visual DFA, CFG, and PDA state machines.</p>
+                <div class="tech-stack">
+                    <span>Python</span><span>JS</span><span>Automata</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/kinza7124/RegexToDFA-CFG-TOAProject" target="_blank"><i class="fab fa-github"></i> Code</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3>Transport Fee System</h3>
+                <p>C++ system for managing transport fees using Object-Oriented principles and File Handling.</p>
+                <div class="tech-stack">
+                    <span class="tag">C++</span><span class="tag">OOP</span><span class="tag">File Handling</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/kinza7124/PFproject-TransportFee-Generation-System" target="_blank"><i class="fab fa-github"></i> Code</a>
                 </div>
             </div>
 
             <div class="project-card">
                 <h3>Data Analysis Project</h3>
-                <p>Statistical analysis and visualization of complex datasets</p>
+                <p>Statistical analysis and visual insights of complex datasets using Python libraries.</p>
                 <div class="tech-stack">
-                    <span>Python</span>
-                    <span>Pandas</span>
-                    <span>NumPy</span>
-                    <span>Statistics</span>
+                    <span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Matplotlib</span>
                 </div>
                 <div class="project-links">
-                    <a href="https://github.com/kinza7124/DataAnalysis"><i class="fab fa-github"></i> View Code</a>
+                    <a href="https://github.com/kinza7124/DataAnalysis" target="_blank"><i class="fab fa-github"></i> Code</a>
                 </div>
             </div>
 
             <div class="project-card">
-                <h3>Algorithm Visualiser</h3>
-                <p>Interactive visualization tool for sorting algorithms</p>
+                <h3>Traffic Simulation</h3>
+                <p>Simulation of intersection traffic control utilizing Operating System scheduling logic.</p>
                 <div class="tech-stack">
-                    <span>DataStructures</span>
-                    <span>Programming concepts</span>
-                    <span>JavaScript</span>
-                    <span>Algorithms</span>
+                    <span class="tag">C</span><span class="tag">Operating Systems</span><span class="tag">Makefile</span>
                 </div>
                 <div class="project-links">
-                    <a href="https://github.com/kinza7124/Algorithm-Visualiser"><i class="fab fa-github"></i> View
-                        Code</a>
+                    <a href="https://github.com/kinza7124/Traffic_Simulation-OS_Project" target="_blank"><i class="fab fa-github"></i> Code</a>
                 </div>
             </div>
-
-            <div class="project-card">
-                <h3>Image Compressor</h3>
-                <p>Web-based image compression tool with quality control</p>
-                <div class="tech-stack">
-                    <span>HTML</span>
-                    <span>CSS</span>
-                    <span>JavaScript</span>
-                </div>
-                <div class="project-links">
-                    <a href="https://github.com/kinza7124/Image-Compressor-Website"><i class="fab fa-github"></i> View
-                        Code</a>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <h3>Hostel Accommodation System</h3>
-                <p>C++ management system for hostel allocations</p>
-                <div class="tech-stack">
-                    <span>C++</span>
-                    <span>OOP</span>
-                    <span>File Handling</span>
-                </div>
-                <div class="project-links">
-                    <a href="https://github.com/kinza7124/OOPproject"><i class="fab fa-github"></i> View Code</a>
-                </div>
-            </div>
-            
-               <div class="project-card">
-                <h3>Regex to DFA,CFG and PDA Convertor</h3>
-                <p>Full stack website which take regular expression as input and gives its corresponding DFA, CFG and PDA.</p>
-                <div class="tech-stack">
-                    <span>HTML</span>
-                    <span>CSS</span>
-                    <span>JavaScript</span>
-                    <span>Python</span>
-                    <span>Automata Concepts</span>
-                    <span>Regex</span>
-                </div>
-                <div class="project-links">
-                    <a href="https://github.com/kinza7124/RegexToDFA-CFG-TOAProject"><i class="fab fa-github"></i> View Code</a>
-                </div>
-            </div>
-            
-               <div class="project-card">
-                <h3>Traffic Control Simulation</h3>
-                <p>Simulation of Traffic control at intersections.</p>
-                <div class="tech-stack">
-                    <span>C</span>
-                    <span>Operating Systems</span>
-                    <span>Makefile</span>
-                </div>
-                <div class="project-links">
-                    <a href="https://github.com/kinza7124/Traffic_Simulation-OS_Project"><i class="fab fa-github"></i> View Code</a>
-                </div>
-            </div>
-            
-        <!-- New Projects -->
-        <div class="project-card">
-            <h3>Predicting Bug Type from Text</h3>
-            <p>Developed a Machine Learning & NLP model to predict bug types from text data.</p>
-            <div class="tech-stack">
-                <span>Python</span>
-                <span>Machine Learning</span>
-                <span>NLP</span>
-            </div>
-            <div class="project-links">
-                <a href="https://github.com/kinza7124/Predicting-Bug-Type-ML-project"><i class="fab fa-github"></i> View Code</a>
-            </div>
-        </div>
-
-            <div class="project-card">
-            <h3>Network Log Analyzer with ChatOps Integration</h3>
-            <p>Developed a Machine Learning model to monitor network logs, data enrichment via NLP, detects anamoly & sends email alert on anaomly detection.</p>
-            <div class="tech-stack">
-                <span>Python</span>
-                <span>Machine Learning</span>
-                <span>NLP</span>
-            </div>
-            <div class="project-links">
-                <a href="https://github.com/kinza7124/Network-Log-Analyzer"><i class="fab fa-github"></i> View Code</a>
-            </div>
-        </div>
-
-            <div class="project-card">
-            <h3>NetLabPro - Interactive Learning Website</h3>
-            <p>Developed an interactive learning and gamified platform for CN Labs. </p>
-            <div class="tech-stack">
-                <span>HTML</span>
-                <span>CSS</span>
-                <span>JavaScript</span>
-            </div>
-            <div class="project-links">
-                <a href="https://github.com/kinza7124/NetLabPro"><i class="fab fa-github"></i> View Code</a>
-                <a href="https://net-lab-pro.vercel.app/"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-            </div>
-        </div>
-
-        <div class="project-card">
-            <h3>Face, Smile and Eye Detection</h3>
-            <p>Real-time face, eye, and smile detection system using OpenCV Haar cascades and Python.</p>
-            <div class="tech-stack">
-                <span>Python</span>
-                <span>OpenCV</span>
-                <span>Computer Vision</span>
-            </div>
-            <div class="project-links">
-                <a href="https://github.com/kinza7124/OPENCV/tree/main/Face"><i class="fab fa-github"></i> View Code</a>
-            </div>
-        </div>
-
-        <div class="project-card">
-            <h3>Gesture Volume Control</h3>
-            <p>Real-time hand gesture-based volume control system using OpenCV, Mediapipe, and Pycaw.</p>
-            <div class="tech-stack">
-                <span>Python</span>
-                <span>OpenCV</span>
-                <span>Mediapipe</span>
-                <span>Pycaw</span>
-            </div>
-            <div class="project-links">
-                <a href="https://github.com/kinza7124/OPENCV/tree/main/GestureVolumeControl"><i class="fab fa-github"></i> View Code</a>
-            </div>
-        </div>
-
-            
         </div>
     </section>
 
     <section id="education">
-        <h2>Education</h2>
-        <div class="education-container">
-            <div class="education-item">
+        <h2>Academic Excellence</h2>
+        <div class="glass-card animate">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
                 <h3>Bachelor of Computer Science</h3>
-                <div class="institution">FAST NUCES (2023-2027)</div>
-                <div class="details">CGPA: 3.8</div>
-                <ul class="achievements">
-                    <li>Dean's List: Fall 2023, Spring 2024</li>
-                    <li>Coursework: Data Structures, OOP, Automata Theory, Probability and Statistics, Operating systems
-                    </li>
-                    <li>Rector's List: Fall 2024</li>
-                </ul>
+                <span class="cgpa-badge">3.91 / 4.0 CGPA</span>
             </div>
-
-            <div class="education-item">
-                <h3>A levels</h3>
-                <div class="institution">Highbrow College</div>
-                <div class="details">Grades: 3A*'s, 1A</div>
-            </div>
-
-            <div class="education-item">
-                <h3>O levels</h3>
-                <div class="institution">HPGS</div>
-                <div class="details">Grades: 8A*'s</div>
-            </div>
+            <p class="accent-text">FAST NUCES (2023-2027)</p>
+            <ul style="margin-top: 1rem; list-style: none; color: #94a3b8;">
+                <li><i class="fas fa-award" style="color: gold;"></i> Rector's List: Fall 2024</li>
+                <li><i class="fas fa-award" style="color: var(--primary);"></i> Dean's List: Fall 2023, Spring 2024</li>
+            </ul>
         </div>
-        </div>
-    </section>
 
-    <section id="experience">
-        <h2>Co-cirricular activities</h2>
-        <div class="experience-container">
-            <div class="experience-item">
-                <h3>Design Head</h3>
-                <div class="institution">IEEE Society (2024-2025)</div>
-                <ul class="achievements">
-                    <li>Led social media post and logo design teams</li>
-                    <li>Created engaging visual content for events</li>
-                </ul>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+            <div class="glass-card animate">
+                <h3>A Levels</h3>
+                <p class="accent-text">Highbrow College</p>
+                <p style="font-weight: 600;">Grades: 3A*, 1A</p>
             </div>
-            <div class="experience-item">
-                <h3>Co-ordinator of Automation Team</h3>
-                <div class="institution">Developers Day 2025</div>
-                <ul class="achievements">
-                    <li>Collaborated in a team to deploy email automation, design custom email templates, and develop
-                        the frontend of the results website for DevDay’25
-                        <a href="https://automation-showcase-devday25.vercel.app/" target="_blank" style="color: #ff7f7f;">View Project</a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="experience-item">
-                <h3>Star Performer of Seminar Team</h3>
-                <div class="institution">Developers Day 2025</div>
-                <ul class="achievements">
-                    <li>Worked as part of the Seminar Team for DevDay'25, enhancing my skills in event organization and
-                        management
-                    </li>
-                    <li>Recognized with the 'Star Performer' award for outstanding contribution and performance</li>
-                </ul>
-            </div>
-
-            <div class="experience-item">
-                <h3>Guest Representative</h3>
-                <div class="institution">PROCOM'25</div>
-                <ul class="achievements">
-                    <li>Enhanced communication skills through direct engagement with guests and effective event
-                        coordination</li>
-                </ul>
-            </div>
-
-            <div class="experience-item">
-                <h3>Game Dev Co-Lead</h3>
-                <div class="institution">Developers Student Club</div>
-                <ul class="achievements">
-                    <li>Managed game development projects</li>
-                    <li>Organized workshops and team collaborations</li>
-                </ul>
+            <div class="glass-card animate">
+                <h3>O Levels</h3>
+                <p class="accent-text">HPGS</p>
+                <p style="font-weight: 600;">Grades: 8A*</p>
             </div>
         </div>
     </section>
 
-    <section id="languages">
-        <h2>Languages</h2>
-        <div class="languages-container">
-            <div class="language-item">
-                <h3>Urdu</h3>
-                <p>Native Proficiency (C2)</p>
-            </div>
-            <div class="language-item">
-                <h3>English</h3>
-                <p>Professional Working (B2)</p>
-            </div>
+    <footer id="footer-content">
+        <div class="footer-links">
+            <a href="tel:03242217127"><i class="fas fa-phone"></i></a>
+            <a href="https://github.com/kinza7124" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/kinza-afzal7-" target="_blank"><i class="fab fa-linkedin"></i></a>
         </div>
-    </section>
-
-    <footer>
-        <footer id="footer-content">
-        <div class="footer-content">
-            <a href="tel:03242217127" class="contact-number">
-                <i class="fas fa-phone"></i> 0324-2217127
-            </a>
-            <a href="https://github.com/kinza7124" target="_blank" class="github-link">
-                <i class="fab fa-github"></i> GitHub Profile
-            </a>
-            <a href="https://www.linkedin.com/in/kinza-afzal7-" target="_blank" class="linkedin-link">
-                <i class="fab fa-linkedin"></i> Linkedin Profile
-            </a>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 Kinza Afzal. All rights reserved.</p>
-        </div>
-        </footer>
+        <p style="opacity: 0.5; font-size: 0.8rem;">&copy; 2025 Kinza Afzal | Intelligent Systems Portfolio</p>
     </footer>
 </body>
-
 </html>
